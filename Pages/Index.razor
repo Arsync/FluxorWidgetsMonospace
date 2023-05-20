@@ -1,0 +1,72 @@
+﻿@page "/"
+@using FluxorWidgetsMonospace.Store
+
+@inherits Fluxor.Blazor.Web.Components.FluxorComponent
+
+<PageTitle>Index</PageTitle>
+
+<h1>Hello, world!</h1>
+
+Welcome to your new app.
+
+<SurveyPrompt Title="How is Blazor working for you?" />
+
+<div class="fwm-entities">
+    <div class="fwm-entities__label">Stored entities: </div>
+    @if (DataSpaceState.Value.Entities.IsEmpty)
+    {
+        <span class="fwm-entities-empty">Empty</span>
+    }
+    else
+    {
+        foreach (var entity in DataSpaceState.Value.Entities.Values)
+        {
+            <span class="fwm-entity">@entity.Name</span>
+        }   
+    }
+</div>
+
+<div class="fwm-entities">
+    <div class="fwm-entities__label">Removed entities: </div>
+    @if (DataSpaceState.Value.RemovedEntities.IsEmpty)
+    {
+        <span class="fwm-entities-empty">Empty</span>
+    }
+    else
+    {
+        foreach (var entity in DataSpaceState.Value.RemovedEntities.Values)
+        {
+            <span class="fwm-entity">@entity.Name</span>
+        }   
+    }
+</div>
+
+<div class="fwm-caption">Widgets:</div>
+
+<div class="fwm-widgets-list">
+    @foreach (var widget in WidgetState.Value.Widgets.OrderBy(x => x.Id))
+    {
+        <div class="fwm-widget">
+            <button type="button" @onclick="() => PopulateWidget(widget.Id)">Populate widget</button>
+            <div class="fwm-entities">
+                <div class="fwm-entities__label">@widget.Name</div>
+                @if (!widget.EntityIds.Any())
+                {
+                    <span class="fwm-entities-empty">Empty</span>
+                }
+                else
+                {
+                    foreach (var entityId in widget.EntityIds)
+                    {
+                        var entity = DataSpaceState.Value.GetEntityById(entityId);
+
+                        if (entity == null)
+                            continue;
+
+                        <span class="fwm-entity">@entity.Name</span>
+                    }
+                }
+            </div>
+        </div>
+    }
+</div>

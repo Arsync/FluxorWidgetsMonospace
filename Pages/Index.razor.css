@@ -1,0 +1,62 @@
+﻿.fwm-widgets-list {
+    padding: .75rem;
+    border: solid 1px lightgray;
+    display: flex;
+    gap: .75rem;
+    flex-direction: column;
+    border-radius: .25rem;
+}
+
+.fwm-caption {
+    margin-top: .75rem;
+    font-size: 1.4em;
+}
+
+.fwm-entities {
+    display: inline-flex;
+    gap: .25rem;
+    flex-wrap: wrap;
+}
+
+.fwm-actions {
+    margin-top: .25rem;
+}
+
+.fwm-widget {
+    display: flex;
+}
+
+.fwm-widget button {
+    padding: .5rem 1rem;
+    
+    border: none;
+    background: lightblue;
+
+    border-radius: .25rem;
+    margin-right: .75rem;
+}
+
+.fwm-entities__label {
+    width: 100%;
+}
+
+.fwm-entity {
+    padding: .25rem;
+    min-width: 2em;
+    text-align: center;
+    line-height: 1em;
+    border: solid 1px dimgray;
+    background: lightgray;
+    border-radius: .25rem;
+}
+
+.fwm-entities-empty {
+    flex: 1;
+    padding: .25rem;
+    min-width: 2em;
+    text-align: center;
+    line-height: 1em;
+    border: solid 1px lightgray;
+    background: #F5F5F5;
+    border-radius: .25rem;
+}
